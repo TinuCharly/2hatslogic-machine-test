@@ -27,7 +27,7 @@
 body {
   font-family: "proximaRegular", sans-serif;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
 }
 .p {
   -webkit-font-smoothing: antialiased;
