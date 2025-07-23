@@ -1,38 +1,575 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2Hats Logic Machine Test</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="assets/css/styles.css" />
-  </head>
-  <body>
-    <header></header>
-    <main>
-      <section class="hero-section">
-        <div>
-          <h1 class="fw-semibold heading">New Generation Ceramic Tile</h1>
-          <p>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2Hats Logic Machine Test</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+
+  <header class="container-fluid py-3 bg-white">
+    <div class="d-flex justify-content-between align-items-center">
+      <!-- Left: Hamburger (mobile only) -->
+      <button class="btn d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+          <path d="M4 12.5H20M4 18.5H20M4 6.5H20" stroke="black" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+
+      <!-- Center: Logo -->
+      <div class="text-start text-lg-center flex-grow-1 pt-lg-4 pb-lg-2">
+        <a href="#"><img src="assets/images/logo.svg" alt="Logo" class="logo"></a>
+      </div>
+
+      <!-- Right icons -->
+      <div class="d-none d-md-flex d-lg-none gap-3 align-items-center">
+        <a href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+            <path
+              d="M17.1466 18.5115C14.6183 20.4745 11.7872 21.1637 8.66956 20.4745C6.27904 19.9506 4.35119 18.6603 2.90806 16.6808C-0.0773376 12.5893 0.495514 6.98701 4.24104 3.52416C7.79928 0.232248 13.4837 0.132994 17.2016 3.23743C21.195 6.57345 22.0653 12.7492 18.5401 17.1219C18.6062 17.1936 18.6778 17.2708 18.7494 17.3425C20.3743 18.9691 22.0047 20.5958 23.6241 22.2335C23.7894 22.3989 23.9215 22.6305 23.9766 22.8566C24.0758 23.2811 23.8499 23.6726 23.4809 23.8656C23.1008 24.0641 22.6657 24.0035 22.3407 23.6892C21.8615 23.2205 21.3933 22.7463 20.9251 22.2721C19.7244 21.0755 18.5291 19.8734 17.3283 18.6769C17.2732 18.6217 17.2127 18.5721 17.1466 18.5115ZM10.8893 2.90107C6.53792 2.89004 2.96866 6.44663 2.94662 10.8248C2.92459 15.1975 6.48834 18.7872 10.8618 18.7982C15.2187 18.8092 18.799 15.2526 18.821 10.891C18.8431 6.49625 15.2848 2.9121 10.8893 2.90107Z"
+              fill="black" stroke="black" stroke-width="0.5" stroke-miterlimit="10" />
+          </svg></a>
+        <a href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="21" viewBox="0 0 24 21" fill="none">
+            <path
+              d="M22.7742 4.70351C22.5065 5.51677 22.2388 6.33003 21.9757 7.14329C21.2741 9.31968 20.5817 11.5007 19.8847 13.6771C19.7185 14.1946 19.5293 14.3379 18.9892 14.3379C15.6151 14.3379 12.2409 14.3379 8.8668 14.3332C8.67756 14.3332 8.59448 14.3887 8.53909 14.5689C8.37292 15.0633 8.18829 15.5531 7.99904 16.0891C8.10982 16.0891 8.19752 16.0891 8.28522 16.0891C11.8348 16.0891 15.3889 16.0891 18.9385 16.0891C19.0308 16.0891 19.1231 16.0891 19.2154 16.0984C19.5339 16.14 19.7555 16.3895 19.7462 16.6852C19.737 16.9856 19.5062 17.2305 19.1923 17.2536C18.9846 17.2674 18.7723 17.2582 18.5184 17.2582C18.9662 17.8266 19.1416 18.4273 18.9985 19.0973C18.8877 19.6241 18.6061 20.0538 18.163 20.3634C17.3645 20.9225 16.3352 20.904 15.5228 20.1832C14.7335 19.4854 14.6689 18.4596 15.3566 17.2767C13.8611 17.2767 12.3702 17.2767 10.8516 17.2767C11.3224 17.9097 11.4978 18.5844 11.2393 19.3376C11.087 19.7812 10.8101 20.137 10.4269 20.3957C9.60533 20.9502 8.53447 20.8532 7.80979 20.1508C7.19128 19.5547 6.81739 18.4134 7.68978 17.2582C7.52822 17.2582 7.39437 17.2582 7.2559 17.2582C6.73431 17.249 6.48044 16.8932 6.65122 16.3987C6.86817 15.7842 7.08973 15.1696 7.31129 14.5597C7.33436 14.495 7.35282 14.4303 7.38052 14.3379C7.26974 14.3379 7.17743 14.3379 7.08973 14.3379C6.69739 14.3286 6.42967 14.1068 6.36043 13.7279C6.1158 12.411 5.87577 11.0941 5.63575 9.77714C5.21571 7.48523 4.79106 5.19331 4.37564 2.89678C4.35256 2.7674 4.29717 2.70733 4.17716 2.66112C3.2817 2.31456 2.38624 1.95876 1.49077 1.60296C1.11689 1.45509 0.936875 1.1224 1.01996 0.780456C1.12612 0.350723 1.54616 0.133545 1.98466 0.299894C2.54778 0.51245 3.10629 0.738869 3.66481 0.960667C4.15408 1.15012 4.63874 1.34881 5.12802 1.53365C5.43728 1.64917 5.60806 1.86634 5.66806 2.18518C6.08349 4.44937 6.49891 6.71818 6.91433 8.98236C7.14512 10.2438 7.37591 11.5053 7.60208 12.7668C7.62516 12.9008 7.68055 12.947 7.82364 12.947C11.3732 12.9424 14.9273 12.9424 18.4769 12.947C18.5923 12.947 18.6661 12.9285 18.7077 12.7945C19.5062 10.29 20.3094 7.7902 21.1079 5.28573C21.1125 5.27187 21.1079 5.25801 21.1079 5.21642C20.9509 5.20718 20.794 5.19331 20.6371 5.18407C18.1584 5.07779 15.6797 4.97614 13.201 4.86986C11.664 4.80517 10.1269 4.73586 8.58986 4.66654C8.15136 4.64806 7.86056 4.34771 7.87441 3.93646C7.88826 3.53907 8.20213 3.2572 8.6314 3.27106C9.32377 3.29417 10.0208 3.33113 10.7131 3.35886C12.1948 3.42355 13.6718 3.49286 15.1535 3.55293C17.4614 3.65459 19.7693 3.75163 22.0772 3.85328C22.4465 3.86715 22.6496 4.08432 22.7742 4.40778C22.7742 4.50482 22.7742 4.60185 22.7742 4.70351ZM16.9629 17.7249C16.4506 17.7203 16.0259 18.1362 16.0213 18.6444C16.0167 19.1527 16.4459 19.5778 16.9537 19.5778C17.4568 19.5778 17.8768 19.1666 17.8814 18.6629C17.8907 18.1546 17.4753 17.7295 16.9629 17.7249ZM10.1915 18.6491C10.1915 18.1315 9.77611 17.7249 9.25453 17.7249C8.74679 17.7295 8.34061 18.1362 8.33599 18.6444C8.33138 19.1574 8.74679 19.5778 9.26376 19.5825C9.77612 19.5825 10.1915 19.1666 10.1915 18.6491Z"
+              fill="black" stroke="black" stroke-width="0.5" stroke-miterlimit="10" />
+          </svg>
+        </a>
+        <a href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="21" viewBox="0 0 25 21" fill="none">
+            <path
+              d="M1.20558 6.64604C1.28049 6.19606 1.32456 5.74168 1.43914 5.30052C2.04286 2.98888 3.39574 1.29926 5.70488 0.571362C8.17266 -0.209479 10.3232 0.42137 12.1035 2.30068C12.315 2.52126 12.5001 2.76389 12.7072 3.01094C12.9099 2.77272 13.095 2.53449 13.3021 2.30951C14.2848 1.25074 15.457 0.514012 16.9068 0.328728C19.1455 0.0419782 21.0624 0.725766 22.5343 2.45067C24.0061 4.17558 24.438 6.21371 24.0987 8.4283C23.8827 9.83117 23.2438 11.0532 22.4065 12.1781C21.3092 13.656 19.9695 14.9 18.5902 16.1044C16.9641 17.5205 15.3248 18.9277 13.6899 20.335C13.0598 20.8776 12.3855 20.8997 11.7818 20.3791C9.64892 18.5263 7.51165 16.6823 5.40522 14.7985C4.33438 13.8457 3.37811 12.7781 2.5893 11.5693C1.84897 10.4267 1.351 9.1959 1.23643 7.82833C1.23202 7.77539 1.21439 7.72686 1.20117 7.67834C1.20558 7.33424 1.20558 6.99014 1.20558 6.64604ZM12.7028 19.3954C12.7601 19.3512 12.8086 19.316 12.8526 19.2763C14.6726 17.7013 16.5014 16.1397 18.3038 14.5515C19.5641 13.4398 20.7628 12.2619 21.6926 10.8502C22.5828 9.50471 23.019 8.04008 22.8163 6.41664C22.596 4.66526 21.8468 3.21387 20.2956 2.30068C18.8502 1.44926 17.3211 1.34338 15.7875 2.08452C14.8797 2.52126 14.2099 3.23151 13.6458 4.05647C13.5665 4.17558 13.4916 4.29911 13.4079 4.41381C13.0377 4.92113 12.3767 4.91672 12.0021 4.41822C11.676 3.98148 11.3764 3.51826 11.0018 3.12123C9.79875 1.84629 8.30927 1.3522 6.59504 1.72277C4.7442 2.12422 3.52794 3.29769 2.9154 5.0623C2.20151 7.11366 2.54083 9.04591 3.72184 10.8458C4.45336 11.9619 5.35234 12.9413 6.33945 13.828C7.96995 15.2971 9.6357 16.7308 11.2838 18.1734C11.7554 18.5836 12.2269 18.9851 12.7028 19.3954Z"
+              fill="black" stroke="black" stroke-width="0.5" stroke-miterlimit="10" />
+          </svg>
+        </a>
+        <a href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" width="19" height="21" viewBox="0 0 19 21" fill="none">
+            <path
+              d="M13.485 10.1212C14.7052 10.8159 15.6384 11.7692 16.3466 12.9524C17.1027 14.2219 17.5573 15.6016 17.7631 17.0531C17.897 18.0016 17.9401 18.9645 17.9975 19.9226C18.031 20.4639 17.72 20.7562 17.1745 20.7562C11.8723 20.7562 6.57019 20.7562 1.26806 20.7562C0.712958 20.7562 0.421054 20.4687 0.425839 19.9082C0.440195 17.9777 0.684247 16.0902 1.4164 14.289C2.12463 12.55 3.2109 11.1272 4.85705 10.1691C4.88097 10.1548 4.9049 10.1308 4.92883 10.1116C2.4931 7.54394 3.03862 3.62051 5.44086 1.61808C7.72345 -0.293335 11.0636 -0.202315 13.2314 1.83844C15.447 3.92231 15.8106 7.58226 13.485 10.1212ZM16.5189 19.2855C16.428 17.3549 16.1265 15.4914 15.1551 13.8003C14.5043 12.665 13.6046 11.7931 12.4131 11.223C12.2695 11.1512 12.1642 11.156 12.0207 11.2326C10.14 12.2291 8.25463 12.2147 6.37878 11.2183C6.25915 11.156 6.16344 11.1416 6.04381 11.2039C5.11067 11.6494 4.33066 12.2817 3.71814 13.1153C2.82807 14.3225 2.35911 15.6974 2.12463 17.1633C2.01457 17.8579 1.95714 18.5669 1.87101 19.2855C6.77596 19.2855 11.6331 19.2855 16.5189 19.2855ZM13.6046 6.10678C13.6046 3.68279 11.6378 1.70431 9.21648 1.70431C6.7951 1.70431 4.81876 3.67321 4.81876 6.0972C4.81876 8.5212 6.78553 10.4997 9.2069 10.4997C11.6283 10.5045 13.6046 8.53078 13.6046 6.10678Z"
+              fill="black" stroke="black" stroke-width="0.5" stroke-miterlimit="10" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Desktop Nav (visible on large screens) -->
+    <div class="container d-none d-lg-flex justify-content-between align-items-center">
+
+      <!-- Left Icons -->
+      <div class="d-flex align-items-center gap-3">
+        <a href="#" class="text-dark fs-5">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+            <path
+              d="M17.1466 18.5115C14.6183 20.4745 11.7872 21.1637 8.66956 20.4745C6.27904 19.9506 4.35119 18.6603 2.90806 16.6808C-0.0773376 12.5893 0.495514 6.98701 4.24104 3.52416C7.79928 0.232248 13.4837 0.132994 17.2016 3.23743C21.195 6.57345 22.0653 12.7492 18.5401 17.1219C18.6062 17.1936 18.6778 17.2708 18.7494 17.3425C20.3743 18.9691 22.0047 20.5958 23.6241 22.2335C23.7894 22.3989 23.9215 22.6305 23.9766 22.8566C24.0758 23.2811 23.8499 23.6726 23.4809 23.8656C23.1008 24.0641 22.6657 24.0035 22.3407 23.6892C21.8615 23.2205 21.3933 22.7463 20.9251 22.2721C19.7244 21.0755 18.5291 19.8734 17.3283 18.6769C17.2732 18.6217 17.2127 18.5721 17.1466 18.5115ZM10.8893 2.90107C6.53792 2.89004 2.96866 6.44663 2.94662 10.8248C2.92459 15.1975 6.48834 18.7872 10.8618 18.7982C15.2187 18.8092 18.799 15.2526 18.821 10.891C18.8431 6.49625 15.2848 2.9121 10.8893 2.90107Z"
+              fill="black" stroke="black" stroke-width="0.5" stroke-miterlimit="10" />
+          </svg>
+        </a>
+      </div>
+      <ul class="navbar-nav flex-row gap-lg-4 mt-2">
+        <li class="nav-item">
+          <a class="nav-link text-muted" href="#">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-bold" href="#">SPACES</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-bold" href="#">PRODUCTS & SERVICES</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-bold" href="#">SHOWROOMS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-bold" href="#">COMPANY</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-bold" href="#">MEDIA</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-bold" href="#">CONTACT</a>
+        </li>
+      </ul>
+      <!-- Right Icons -->
+      <div class="d-flex align-items-center gap-3">
+        <a href="#" class="text-dark fs-5">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="21" viewBox="0 0 24 21" fill="none">
+            <path
+              d="M22.7742 4.70351C22.5065 5.51677 22.2388 6.33003 21.9757 7.14329C21.2741 9.31968 20.5817 11.5007 19.8847 13.6771C19.7185 14.1946 19.5293 14.3379 18.9892 14.3379C15.6151 14.3379 12.2409 14.3379 8.8668 14.3332C8.67756 14.3332 8.59448 14.3887 8.53909 14.5689C8.37292 15.0633 8.18829 15.5531 7.99904 16.0891C8.10982 16.0891 8.19752 16.0891 8.28522 16.0891C11.8348 16.0891 15.3889 16.0891 18.9385 16.0891C19.0308 16.0891 19.1231 16.0891 19.2154 16.0984C19.5339 16.14 19.7555 16.3895 19.7462 16.6852C19.737 16.9856 19.5062 17.2305 19.1923 17.2536C18.9846 17.2674 18.7723 17.2582 18.5184 17.2582C18.9662 17.8266 19.1416 18.4273 18.9985 19.0973C18.8877 19.6241 18.6061 20.0538 18.163 20.3634C17.3645 20.9225 16.3352 20.904 15.5228 20.1832C14.7335 19.4854 14.6689 18.4596 15.3566 17.2767C13.8611 17.2767 12.3702 17.2767 10.8516 17.2767C11.3224 17.9097 11.4978 18.5844 11.2393 19.3376C11.087 19.7812 10.8101 20.137 10.4269 20.3957C9.60533 20.9502 8.53447 20.8532 7.80979 20.1508C7.19128 19.5547 6.81739 18.4134 7.68978 17.2582C7.52822 17.2582 7.39437 17.2582 7.2559 17.2582C6.73431 17.249 6.48044 16.8932 6.65122 16.3987C6.86817 15.7842 7.08973 15.1696 7.31129 14.5597C7.33436 14.495 7.35282 14.4303 7.38052 14.3379C7.26974 14.3379 7.17743 14.3379 7.08973 14.3379C6.69739 14.3286 6.42967 14.1068 6.36043 13.7279C6.1158 12.411 5.87577 11.0941 5.63575 9.77714C5.21571 7.48523 4.79106 5.19331 4.37564 2.89678C4.35256 2.7674 4.29717 2.70733 4.17716 2.66112C3.2817 2.31456 2.38624 1.95876 1.49077 1.60296C1.11689 1.45509 0.936875 1.1224 1.01996 0.780456C1.12612 0.350723 1.54616 0.133545 1.98466 0.299894C2.54778 0.51245 3.10629 0.738869 3.66481 0.960667C4.15408 1.15012 4.63874 1.34881 5.12802 1.53365C5.43728 1.64917 5.60806 1.86634 5.66806 2.18518C6.08349 4.44937 6.49891 6.71818 6.91433 8.98236C7.14512 10.2438 7.37591 11.5053 7.60208 12.7668C7.62516 12.9008 7.68055 12.947 7.82364 12.947C11.3732 12.9424 14.9273 12.9424 18.4769 12.947C18.5923 12.947 18.6661 12.9285 18.7077 12.7945C19.5062 10.29 20.3094 7.7902 21.1079 5.28573C21.1125 5.27187 21.1079 5.25801 21.1079 5.21642C20.9509 5.20718 20.794 5.19331 20.6371 5.18407C18.1584 5.07779 15.6797 4.97614 13.201 4.86986C11.664 4.80517 10.1269 4.73586 8.58986 4.66654C8.15136 4.64806 7.86056 4.34771 7.87441 3.93646C7.88826 3.53907 8.20213 3.2572 8.6314 3.27106C9.32377 3.29417 10.0208 3.33113 10.7131 3.35886C12.1948 3.42355 13.6718 3.49286 15.1535 3.55293C17.4614 3.65459 19.7693 3.75163 22.0772 3.85328C22.4465 3.86715 22.6496 4.08432 22.7742 4.40778C22.7742 4.50482 22.7742 4.60185 22.7742 4.70351ZM16.9629 17.7249C16.4506 17.7203 16.0259 18.1362 16.0213 18.6444C16.0167 19.1527 16.4459 19.5778 16.9537 19.5778C17.4568 19.5778 17.8768 19.1666 17.8814 18.6629C17.8907 18.1546 17.4753 17.7295 16.9629 17.7249ZM10.1915 18.6491C10.1915 18.1315 9.77611 17.7249 9.25453 17.7249C8.74679 17.7295 8.34061 18.1362 8.33599 18.6444C8.33138 19.1574 8.74679 19.5778 9.26376 19.5825C9.77612 19.5825 10.1915 19.1666 10.1915 18.6491Z"
+              fill="black" stroke="black" stroke-width="0.5" stroke-miterlimit="10" />
+          </svg></a>
+        <a href="#" class="text-dark fs-5">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="21" viewBox="0 0 25 21" fill="none">
+            <path
+              d="M1.20558 6.64604C1.28049 6.19606 1.32456 5.74168 1.43914 5.30052C2.04286 2.98888 3.39574 1.29926 5.70488 0.571362C8.17266 -0.209479 10.3232 0.42137 12.1035 2.30068C12.315 2.52126 12.5001 2.76389 12.7072 3.01094C12.9099 2.77272 13.095 2.53449 13.3021 2.30951C14.2848 1.25074 15.457 0.514012 16.9068 0.328728C19.1455 0.0419782 21.0624 0.725766 22.5343 2.45067C24.0061 4.17558 24.438 6.21371 24.0987 8.4283C23.8827 9.83117 23.2438 11.0532 22.4065 12.1781C21.3092 13.656 19.9695 14.9 18.5902 16.1044C16.9641 17.5205 15.3248 18.9277 13.6899 20.335C13.0598 20.8776 12.3855 20.8997 11.7818 20.3791C9.64892 18.5263 7.51165 16.6823 5.40522 14.7985C4.33438 13.8457 3.37811 12.7781 2.5893 11.5693C1.84897 10.4267 1.351 9.1959 1.23643 7.82833C1.23202 7.77539 1.21439 7.72686 1.20117 7.67834C1.20558 7.33424 1.20558 6.99014 1.20558 6.64604ZM12.7028 19.3954C12.7601 19.3512 12.8086 19.316 12.8526 19.2763C14.6726 17.7013 16.5014 16.1397 18.3038 14.5515C19.5641 13.4398 20.7628 12.2619 21.6926 10.8502C22.5828 9.50471 23.019 8.04008 22.8163 6.41664C22.596 4.66526 21.8468 3.21387 20.2956 2.30068C18.8502 1.44926 17.3211 1.34338 15.7875 2.08452C14.8797 2.52126 14.2099 3.23151 13.6458 4.05647C13.5665 4.17558 13.4916 4.29911 13.4079 4.41381C13.0377 4.92113 12.3767 4.91672 12.0021 4.41822C11.676 3.98148 11.3764 3.51826 11.0018 3.12123C9.79875 1.84629 8.30927 1.3522 6.59504 1.72277C4.7442 2.12422 3.52794 3.29769 2.9154 5.0623C2.20151 7.11366 2.54083 9.04591 3.72184 10.8458C4.45336 11.9619 5.35234 12.9413 6.33945 13.828C7.96995 15.2971 9.6357 16.7308 11.2838 18.1734C11.7554 18.5836 12.2269 18.9851 12.7028 19.3954Z"
+              fill="black" stroke="black" stroke-width="0.5" stroke-miterlimit="10" />
+          </svg>
+        </a>
+        <a href="#" class="text-dark fs-5">
+          <svg xmlns="http://www.w3.org/2000/svg" width="19" height="21" viewBox="0 0 19 21" fill="none">
+            <path
+              d="M13.485 10.1212C14.7052 10.8159 15.6384 11.7692 16.3466 12.9524C17.1027 14.2219 17.5573 15.6016 17.7631 17.0531C17.897 18.0016 17.9401 18.9645 17.9975 19.9226C18.031 20.4639 17.72 20.7562 17.1745 20.7562C11.8723 20.7562 6.57019 20.7562 1.26806 20.7562C0.712958 20.7562 0.421054 20.4687 0.425839 19.9082C0.440195 17.9777 0.684247 16.0902 1.4164 14.289C2.12463 12.55 3.2109 11.1272 4.85705 10.1691C4.88097 10.1548 4.9049 10.1308 4.92883 10.1116C2.4931 7.54394 3.03862 3.62051 5.44086 1.61808C7.72345 -0.293335 11.0636 -0.202315 13.2314 1.83844C15.447 3.92231 15.8106 7.58226 13.485 10.1212ZM16.5189 19.2855C16.428 17.3549 16.1265 15.4914 15.1551 13.8003C14.5043 12.665 13.6046 11.7931 12.4131 11.223C12.2695 11.1512 12.1642 11.156 12.0207 11.2326C10.14 12.2291 8.25463 12.2147 6.37878 11.2183C6.25915 11.156 6.16344 11.1416 6.04381 11.2039C5.11067 11.6494 4.33066 12.2817 3.71814 13.1153C2.82807 14.3225 2.35911 15.6974 2.12463 17.1633C2.01457 17.8579 1.95714 18.5669 1.87101 19.2855C6.77596 19.2855 11.6331 19.2855 16.5189 19.2855ZM13.6046 6.10678C13.6046 3.68279 11.6378 1.70431 9.21648 1.70431C6.7951 1.70431 4.81876 3.67321 4.81876 6.0972C4.81876 8.5212 6.78553 10.4997 9.2069 10.4997C11.6283 10.5045 13.6046 8.53078 13.6046 6.10678Z"
+              fill="black" stroke="black" stroke-width="0.5" stroke-miterlimit="10" />
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="w-100 d-flex justify-content-between px-4 bg-white position-fixed bottom-0 end-0 p-3 d-md-none">
+      <a href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+          <path
+            d="M17.1466 18.5115C14.6183 20.4745 11.7872 21.1637 8.66956 20.4745C6.27904 19.9506 4.35119 18.6603 2.90806 16.6808C-0.0773376 12.5893 0.495514 6.98701 4.24104 3.52416C7.79928 0.232248 13.4837 0.132994 17.2016 3.23743C21.195 6.57345 22.0653 12.7492 18.5401 17.1219C18.6062 17.1936 18.6778 17.2708 18.7494 17.3425C20.3743 18.9691 22.0047 20.5958 23.6241 22.2335C23.7894 22.3989 23.9215 22.6305 23.9766 22.8566C24.0758 23.2811 23.8499 23.6726 23.4809 23.8656C23.1008 24.0641 22.6657 24.0035 22.3407 23.6892C21.8615 23.2205 21.3933 22.7463 20.9251 22.2721C19.7244 21.0755 18.5291 19.8734 17.3283 18.6769C17.2732 18.6217 17.2127 18.5721 17.1466 18.5115ZM10.8893 2.90107C6.53792 2.89004 2.96866 6.44663 2.94662 10.8248C2.92459 15.1975 6.48834 18.7872 10.8618 18.7982C15.2187 18.8092 18.799 15.2526 18.821 10.891C18.8431 6.49625 15.2848 2.9121 10.8893 2.90107Z"
+            fill="black" stroke="black" stroke-width="0.5" stroke-miterlimit="10" />
+        </svg></a>
+      <a href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="21" viewBox="0 0 24 21" fill="none">
+          <path
+            d="M22.7742 4.70351C22.5065 5.51677 22.2388 6.33003 21.9757 7.14329C21.2741 9.31968 20.5817 11.5007 19.8847 13.6771C19.7185 14.1946 19.5293 14.3379 18.9892 14.3379C15.6151 14.3379 12.2409 14.3379 8.8668 14.3332C8.67756 14.3332 8.59448 14.3887 8.53909 14.5689C8.37292 15.0633 8.18829 15.5531 7.99904 16.0891C8.10982 16.0891 8.19752 16.0891 8.28522 16.0891C11.8348 16.0891 15.3889 16.0891 18.9385 16.0891C19.0308 16.0891 19.1231 16.0891 19.2154 16.0984C19.5339 16.14 19.7555 16.3895 19.7462 16.6852C19.737 16.9856 19.5062 17.2305 19.1923 17.2536C18.9846 17.2674 18.7723 17.2582 18.5184 17.2582C18.9662 17.8266 19.1416 18.4273 18.9985 19.0973C18.8877 19.6241 18.6061 20.0538 18.163 20.3634C17.3645 20.9225 16.3352 20.904 15.5228 20.1832C14.7335 19.4854 14.6689 18.4596 15.3566 17.2767C13.8611 17.2767 12.3702 17.2767 10.8516 17.2767C11.3224 17.9097 11.4978 18.5844 11.2393 19.3376C11.087 19.7812 10.8101 20.137 10.4269 20.3957C9.60533 20.9502 8.53447 20.8532 7.80979 20.1508C7.19128 19.5547 6.81739 18.4134 7.68978 17.2582C7.52822 17.2582 7.39437 17.2582 7.2559 17.2582C6.73431 17.249 6.48044 16.8932 6.65122 16.3987C6.86817 15.7842 7.08973 15.1696 7.31129 14.5597C7.33436 14.495 7.35282 14.4303 7.38052 14.3379C7.26974 14.3379 7.17743 14.3379 7.08973 14.3379C6.69739 14.3286 6.42967 14.1068 6.36043 13.7279C6.1158 12.411 5.87577 11.0941 5.63575 9.77714C5.21571 7.48523 4.79106 5.19331 4.37564 2.89678C4.35256 2.7674 4.29717 2.70733 4.17716 2.66112C3.2817 2.31456 2.38624 1.95876 1.49077 1.60296C1.11689 1.45509 0.936875 1.1224 1.01996 0.780456C1.12612 0.350723 1.54616 0.133545 1.98466 0.299894C2.54778 0.51245 3.10629 0.738869 3.66481 0.960667C4.15408 1.15012 4.63874 1.34881 5.12802 1.53365C5.43728 1.64917 5.60806 1.86634 5.66806 2.18518C6.08349 4.44937 6.49891 6.71818 6.91433 8.98236C7.14512 10.2438 7.37591 11.5053 7.60208 12.7668C7.62516 12.9008 7.68055 12.947 7.82364 12.947C11.3732 12.9424 14.9273 12.9424 18.4769 12.947C18.5923 12.947 18.6661 12.9285 18.7077 12.7945C19.5062 10.29 20.3094 7.7902 21.1079 5.28573C21.1125 5.27187 21.1079 5.25801 21.1079 5.21642C20.9509 5.20718 20.794 5.19331 20.6371 5.18407C18.1584 5.07779 15.6797 4.97614 13.201 4.86986C11.664 4.80517 10.1269 4.73586 8.58986 4.66654C8.15136 4.64806 7.86056 4.34771 7.87441 3.93646C7.88826 3.53907 8.20213 3.2572 8.6314 3.27106C9.32377 3.29417 10.0208 3.33113 10.7131 3.35886C12.1948 3.42355 13.6718 3.49286 15.1535 3.55293C17.4614 3.65459 19.7693 3.75163 22.0772 3.85328C22.4465 3.86715 22.6496 4.08432 22.7742 4.40778C22.7742 4.50482 22.7742 4.60185 22.7742 4.70351ZM16.9629 17.7249C16.4506 17.7203 16.0259 18.1362 16.0213 18.6444C16.0167 19.1527 16.4459 19.5778 16.9537 19.5778C17.4568 19.5778 17.8768 19.1666 17.8814 18.6629C17.8907 18.1546 17.4753 17.7295 16.9629 17.7249ZM10.1915 18.6491C10.1915 18.1315 9.77611 17.7249 9.25453 17.7249C8.74679 17.7295 8.34061 18.1362 8.33599 18.6444C8.33138 19.1574 8.74679 19.5778 9.26376 19.5825C9.77612 19.5825 10.1915 19.1666 10.1915 18.6491Z"
+            fill="black" stroke="black" stroke-width="0.5" stroke-miterlimit="10" />
+        </svg>
+      </a>
+      <a href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="21" viewBox="0 0 25 21" fill="none">
+          <path
+            d="M1.20558 6.64604C1.28049 6.19606 1.32456 5.74168 1.43914 5.30052C2.04286 2.98888 3.39574 1.29926 5.70488 0.571362C8.17266 -0.209479 10.3232 0.42137 12.1035 2.30068C12.315 2.52126 12.5001 2.76389 12.7072 3.01094C12.9099 2.77272 13.095 2.53449 13.3021 2.30951C14.2848 1.25074 15.457 0.514012 16.9068 0.328728C19.1455 0.0419782 21.0624 0.725766 22.5343 2.45067C24.0061 4.17558 24.438 6.21371 24.0987 8.4283C23.8827 9.83117 23.2438 11.0532 22.4065 12.1781C21.3092 13.656 19.9695 14.9 18.5902 16.1044C16.9641 17.5205 15.3248 18.9277 13.6899 20.335C13.0598 20.8776 12.3855 20.8997 11.7818 20.3791C9.64892 18.5263 7.51165 16.6823 5.40522 14.7985C4.33438 13.8457 3.37811 12.7781 2.5893 11.5693C1.84897 10.4267 1.351 9.1959 1.23643 7.82833C1.23202 7.77539 1.21439 7.72686 1.20117 7.67834C1.20558 7.33424 1.20558 6.99014 1.20558 6.64604ZM12.7028 19.3954C12.7601 19.3512 12.8086 19.316 12.8526 19.2763C14.6726 17.7013 16.5014 16.1397 18.3038 14.5515C19.5641 13.4398 20.7628 12.2619 21.6926 10.8502C22.5828 9.50471 23.019 8.04008 22.8163 6.41664C22.596 4.66526 21.8468 3.21387 20.2956 2.30068C18.8502 1.44926 17.3211 1.34338 15.7875 2.08452C14.8797 2.52126 14.2099 3.23151 13.6458 4.05647C13.5665 4.17558 13.4916 4.29911 13.4079 4.41381C13.0377 4.92113 12.3767 4.91672 12.0021 4.41822C11.676 3.98148 11.3764 3.51826 11.0018 3.12123C9.79875 1.84629 8.30927 1.3522 6.59504 1.72277C4.7442 2.12422 3.52794 3.29769 2.9154 5.0623C2.20151 7.11366 2.54083 9.04591 3.72184 10.8458C4.45336 11.9619 5.35234 12.9413 6.33945 13.828C7.96995 15.2971 9.6357 16.7308 11.2838 18.1734C11.7554 18.5836 12.2269 18.9851 12.7028 19.3954Z"
+            fill="black" stroke="black" stroke-width="0.5" stroke-miterlimit="10" />
+        </svg>
+      </a>
+      <a href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="21" viewBox="0 0 19 21" fill="none">
+          <path
+            d="M13.485 10.1212C14.7052 10.8159 15.6384 11.7692 16.3466 12.9524C17.1027 14.2219 17.5573 15.6016 17.7631 17.0531C17.897 18.0016 17.9401 18.9645 17.9975 19.9226C18.031 20.4639 17.72 20.7562 17.1745 20.7562C11.8723 20.7562 6.57019 20.7562 1.26806 20.7562C0.712958 20.7562 0.421054 20.4687 0.425839 19.9082C0.440195 17.9777 0.684247 16.0902 1.4164 14.289C2.12463 12.55 3.2109 11.1272 4.85705 10.1691C4.88097 10.1548 4.9049 10.1308 4.92883 10.1116C2.4931 7.54394 3.03862 3.62051 5.44086 1.61808C7.72345 -0.293335 11.0636 -0.202315 13.2314 1.83844C15.447 3.92231 15.8106 7.58226 13.485 10.1212ZM16.5189 19.2855C16.428 17.3549 16.1265 15.4914 15.1551 13.8003C14.5043 12.665 13.6046 11.7931 12.4131 11.223C12.2695 11.1512 12.1642 11.156 12.0207 11.2326C10.14 12.2291 8.25463 12.2147 6.37878 11.2183C6.25915 11.156 6.16344 11.1416 6.04381 11.2039C5.11067 11.6494 4.33066 12.2817 3.71814 13.1153C2.82807 14.3225 2.35911 15.6974 2.12463 17.1633C2.01457 17.8579 1.95714 18.5669 1.87101 19.2855C6.77596 19.2855 11.6331 19.2855 16.5189 19.2855ZM13.6046 6.10678C13.6046 3.68279 11.6378 1.70431 9.21648 1.70431C6.7951 1.70431 4.81876 3.67321 4.81876 6.0972C4.81876 8.5212 6.78553 10.4997 9.2069 10.4997C11.6283 10.5045 13.6046 8.53078 13.6046 6.10678Z"
+            fill="black" stroke="black" stroke-width="0.5" stroke-miterlimit="10" />
+        </svg>
+      </a>
+    </div>
+  </header>
+  <!-- Offcanvas Sidebar Menu (for mobile) -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu">
+    <div class="offcanvas-header">
+      <a href="#"><img src="assets/images/logo.svg" alt="Logo" class="logo"></a>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link fw-bold" href="#">HOME</a></li>
+        <li class="nav-item"><a class="nav-link fw-bold" href="#">SPACES</a></li>
+        <li class="nav-item"><a class="nav-link fw-bold" href="#">PRODUCTS & SERVICES</a></li>
+        <li class="nav-item"><a class="nav-link fw-bold" href="#">SHOWROOMS</a></li>
+        <li class="nav-item"><a class="nav-link fw-bold" href="#">COMPANY</a></li>
+        <li class="nav-item"><a class="nav-link fw-bold" href="#">MEDIA</a></li>
+        <li class="nav-item"><a class="nav-link fw-bold" href="#">CONTACT</a></li>
+      </ul>
+    </div>
+  </div>
+  <main>
+    <section class="hero-section">
+      <div class="container-lg">
+        <div class="hero-content">
+          <h1 class="fw-semibold heading mb-md-4">New Generation Ceramic Tile</h1>
+          <p class="lh-base fs-5">
             Penatibus sem vitae mollis luctus mi tellus. Maximus eu eleifend
             aptent dapibus metus maecenas consequat. Elementum interdum a
             semper. Netus nullam eros nisi volutpat nibh ex ultricies. Pharetra
             sagittis sit aliquet at. Magna nam platea justo.
           </p>
-          <button>Learn more</button>
+          <button class="text-uppercase bg-white mt-5">Learn more</button>
         </div>
-      </section>
-    </main>
-    <footer></footer>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"
-      integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+      </div>
+
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section py-5 container text-center d-flex flex-column">
+      <h2 class="fw-bold mb-2 heading underline">Products</h2>
+      <p class="text-muted mb-4 mt-5">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        Lorem Ipsum has been the industry's standard dummy text.
+      </p>
+
+  
+      <div class="row d-none d-lg-flex flex-grow-1">
+        <div class="col-lg-5 col-md-6 mb-4">
+          <figure class="product-card">
+            <img src="assets/images/product-01.png" class="img-fluid w-100" alt="Bathroom Tiles">
+            <figcaption class="">
+              <h5 class="mb-1 subheading">Bathroom Tiles</h5>
+              <p class="mb-0">Ante mus blandit sapien sociosqu per consequat ad.</p>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <figure class="product-card">
+            <img src="assets/images/product-02.png" class="img-fluid w-100" alt="Marble">
+            <figcaption>
+              <h5 class="mb-1 subheading">Marble</h5>
+              <p class="mb-0">Ante mus blandit sapien sociosqu.</p>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="col-lg-4 row gap-5">
+          <div class="col-lg-12 col-md-6 mb-4">
+            <figure class="product-card">
+              <img src="assets/images/product-03.png" class="img-fluid w-100" alt="Outdoor Flooring">
+              <figcaption>
+                <h5 class="mb-1 subheading">Outdoor Flooring</h5>
+                <p class="mb-0">Ante mus blandit sapien sociosqu per consequat ad.</p>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="col-lg-12 col-md-6 mb-4">
+            <figure class="product-card">
+              <img src="assets/images/product-04.png" class="img-fluid w-100" alt="Kitchen Interior">
+              <figcaption>
+                <h5 class="mb-1 subheading">Kitchen Interior</h5>
+                <p class="mb-0">Ante mus blandit sapien sociosqu per consequat ad.</p>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div id="productsCarousel" class="carousel slide d-none d-md-block d-lg-none flex-grow-1" data-bs-ride="carousel">
+        <div class="carousel-inner h-100">
+          <!-- Slide 1 -->
+          <div class="carousel-item active h-100">
+            <div class="row h-100">
+              <div class="col-12 col-md-6 mb-3">
+                <figure class="product-card">
+                  <img src="assets/images/product-01.png" class="img-fluid object-fit-cover w-100" alt="Bathroom Tiles">
+                  <figcaption>
+                    <h5 class="mb-1 subheading">Bathroom Tiles</h5>
+                    <p class="mb-0">Ante mus blandit sapien sociosqu per consequat ad.</p>
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="col-12 col-md-6 mb-3 d-none d-md-block">
+                <figure class="product-card">
+                  <img src="assets/images/product-02.png" class="img-fluid object-fit-cover w-100" alt="Marble">
+                  <figcaption>
+                    <h5 class="mb-1 subheading">Marble</h5>
+                    <p class="mb-0">Ante mus blandit sapien sociosqu.</p>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="carousel-item h-100">
+            <div class="row h-100">
+              <div class="col-12 col-md-6 mb-3">
+                <figure class="product-card">
+                  <img src="assets/images/product-03.png" class="img-fluid object-fit-cover w-100" alt="Outdoor Flooring">
+                  <figcaption>
+                    <h5 class="mb-1 subheading">Outdoor Flooring</h5>
+                    <p class="mb-0">Ante mus blandit sapien sociosqu per consequat ad.</p>
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="col-12 col-md-6 mb-3 d-none d-md-block">
+                <figure class="product-card">
+                  <img src="assets/images/product-04.png" class="img-fluid object-fit-cover w-100" alt="Kitchen Interior">
+                  <figcaption>
+                    <h5 class="mb-1 subheading">Kitchen Interior</h5>
+                    <p class="mb-0">Ante mus blandit sapien sociosqu per consequat ad.</p>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carousel Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#productsCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#productsCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <div id="productsCarousel2" class="carousel slide d-md-none  flex-grow-1" data-bs-ride="carousel">
+        <div class="carousel-inner h-100 pb-5">
+       
+          <div class="h-100 carousel-item active">
+            <figure class="product-card">
+              <img src="assets/images/product-01.png" class="img-fluid object-fit-cover w-100" alt="Bathroom Tiles">
+              <figcaption>
+                <h5 class="mb-1 subheading">Bathroom Tiles</h5>
+                <p class="mb-0">Ante mus blandit sapien sociosqu per consequat ad.</p>
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="h-100 carousel-item ">
+            <figure class="product-card">
+              <img src="assets/images/product-04.png" class="img-fluid object-fit-cover w-100" alt="Marble">
+              <figcaption>
+                <h5 class="mb-1 subheading">Marble</h5>
+                <p class="mb-0">Ante mus blandit sapien sociosqu.</p>
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="h-100 carousel-item ">
+            <figure class="product-card">
+              <img src="assets/images/product-03.png" class="img-fluid object-fit-cover w-100" alt="Outdoor Flooring">
+              <figcaption>
+                <h5 class="mb-1 subheading">Outdoor Flooring</h5>
+                <p class="mb-0">Ante mus blandit sapien sociosqu per consequat ad.</p>
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="h-100 carousel-item ">
+            <figure class="product-card">
+              <img src="assets/images/product-04.png" class="img-fluid object-fit-cover w-100" alt="Kitchen Interior">
+              <figcaption>
+                <h5 class="mb-1 subheading">Kitchen Interior</h5>
+                <p class="mb-0">Ante mus blandit sapien sociosqu per consequat ad.</p>
+              </figcaption>
+            </figure>
+          </div>
+
+        </div>
+
+        <!-- Carousel Controls -->
+        <button class="carousel-control-prev " type="button" data-bs-target="#productsCarousel2" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#productsCarousel2" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+<section class="projects-section py-5 container text-center d-flex flex-column">
+  <h2 class="fw-bold mb-2 heading underline">Projects</h2>
+  <p class="text-muted mb-4 mt-5">
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+    Lorem Ipsum has been the industry's standard dummy text.
+  </p>
+
+  <!-- Grid for lg and above -->
+  <div class="row d-none d-lg-flex">
+    <div class="col-lg-3 mb-4">
+      <figure>
+        <img src="assets/images/project-01.png" class="img-fluid w-100" alt="Kingdom Tower">
+        <figcaption>
+          <h5 class="fw-bold mt-2">Kingdom Tower</h5>
+          <p class="text-muted">Marble Flooring</p>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="col-lg-3 mb-4">
+      <figure>
+        <img src="assets/images/project-02.png" class="img-fluid w-100" alt="Dubai Mall">
+        <figcaption>
+          <h5 class="fw-bold mt-2">Dubai Mall</h5>
+          <p class="text-muted">Wood Flooring</p>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="col-lg-3 mb-4">
+      <figure>
+        <img src="assets/images/project-03.png" class="img-fluid w-100" alt="King Road Offices">
+        <figcaption>
+          <h5 class="fw-bold mt-2">King Road Offices</h5>
+          <p class="text-muted">Outdoor Flooring</p>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="col-lg-3 mb-4">
+      <figure>
+        <img src="assets/images/project-04.png" class="img-fluid w-100" alt="Beach Tower Alupang">
+        <figcaption>
+          <h5 class="fw-bold mt-2">Beach Tower Alupang</h5>
+          <p class="text-muted">Wood Flooring</p>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- Tablet Carousel (2 items per slide) -->
+  <div id="projectsCarouselTablet" class="carousel slide d-none d-md-block d-lg-none" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <figure>
+              <img src="assets/images/project-01.png" class="img-fluid w-100" alt="Kingdom Tower">
+              <figcaption>
+                <h5 class="fw-bold mt-2">Kingdom Tower</h5>
+                <p class="text-muted">Marble Flooring</p>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="col-md-6 mb-4">
+            <figure>
+              <img src="assets/images/project-02.png" class="img-fluid w-100" alt="Dubai Mall">
+              <figcaption>
+                <h5 class="fw-bold mt-2">Dubai Mall</h5>
+                <p class="text-muted">Wood Flooring</p>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <figure>
+              <img src="assets/images/project-03.png" class="img-fluid w-100" alt="King Road Offices">
+              <figcaption>
+                <h5 class="fw-bold mt-2">King Road Offices</h5>
+                <p class="text-muted">Outdoor Flooring</p>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="col-md-6 mb-4">
+            <figure>
+              <img src="assets/images/project-04.png" class="img-fluid w-100" alt="Beach Tower Alupang">
+              <figcaption>
+                <h5 class="fw-bold mt-2">Beach Tower Alupang</h5>
+                <p class="text-muted">Wood Flooring</p>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#projectsCarouselTablet" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#projectsCarouselTablet" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <!-- Mobile Carousel (1 item per slide) -->
+  <div id="projectsCarouselMobile" class="carousel slide d-md-none" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <figure>
+          <img src="assets/images/project-01.png" class="img-fluid w-100" alt="Kingdom Tower">
+          <figcaption>
+            <h5 class="fw-bold mt-2">Kingdom Tower</h5>
+            <p class="text-muted">Marble Flooring</p>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="carousel-item">
+        <figure>
+          <img src="assets/images/project-02.png" class="img-fluid w-100" alt="Dubai Mall">
+          <figcaption>
+            <h5 class="fw-bold mt-2">Dubai Mall</h5>
+            <p class="text-muted">Wood Flooring</p>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="carousel-item">
+        <figure>
+          <img src="assets/images/project-03.png" class="img-fluid w-100" alt="King Road Offices">
+          <figcaption>
+            <h5 class="fw-bold mt-2">King Road Offices</h5>
+            <p class="text-muted">Outdoor Flooring</p>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="carousel-item">
+        <figure>
+          <img src="assets/images/project-04.png" class="img-fluid w-100" alt="Beach Tower Alupang">
+          <figcaption>
+            <h5 class="fw-bold mt-2">Beach Tower Alupang</h5>
+            <p class="text-muted">Wood Flooring</p>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#projectsCarouselMobile" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#projectsCarouselMobile" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <!-- View All Button -->
+  <div class="mt-4">
+    <a href="#" class="btn btn-dark px-4 py-2">VIEW ALL</a>
+  </div>
+</section>
+
+
+  </main>
+  <footer class="bg-dark text-white py-5">
+    <div class="container">
+      <div class="row">
+        <!-- Logo & Social -->
+        <div class="col-md-3 mb-4">
+          <h2 class="mb-3">Logo</h2>
+          <div>
+            <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <!-- Products -->
+        <div class="col-md-3 mb-4">
+          <h6 class="fw-bold mb-3">Products</h6>
+          <ul class="list-unstyled">
+            <li>Sand Stone</li>
+            <li>Stone</li>
+            <li>Cement</li>
+            <li>Soft Stone</li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div class="col-md-3 mb-4">
+          <h6 class="fw-bold mb-3">Services</h6>
+          <ul class="list-unstyled">
+            <li>Measurement Service</li>
+            <li>Product Advice</li>
+            <li>Interior Design</li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="col-md-3 mb-4">
+          <h6 class="fw-bold mb-3">Contact Information</h6>
+          <p class="mb-1">3181 Al Imam Saud Ibn Abdul Aziz Branch Rd,</p>
+          <p class="mb-1">An Nuzhah, Riyadh 12474,</p>
+          <p>Saudi Arabia</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"
+    integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>
