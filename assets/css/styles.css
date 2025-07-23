@@ -29,7 +29,7 @@ body {
   width: 100%;
   min-height: 100vh;
 }
-.p {
+p {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -184,7 +184,11 @@ body {
 footer {
   font-family: "Poppins", sans-serif;
   font-size: 14px;
-  color: #a4a4a4;
+  color: #a4a4a4 !important;
+
+  a {
+     color: #a4a4a4 !important;
+  }
 }
 
 #productsCarousel img {
